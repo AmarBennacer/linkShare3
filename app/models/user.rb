@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
 
          has_many :links
-
+         acts_as_voter
 end
