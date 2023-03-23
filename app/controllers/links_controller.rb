@@ -50,6 +50,16 @@ class LinksController < ApplicationController
     redirect_back fallback_location: root_path
   end
   
+  def dislike
+    @link = Link.find(params[:id])
+    if (params[:format]) == 'dislike'
+      @link.disliked_by current_user
+    elsif params[:format] == 'undislike'
+      @link.undisliked_by current_user
+    end
+    redirect_back fallback_location: root_path
+  end
+
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
